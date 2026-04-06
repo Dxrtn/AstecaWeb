@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Nunito Sans", sans-serif;
+    background-color: rgb(109, 109, 109);
+    display: flex;
+    flex-direction: column;
+}
+
+/*           Menu           */
+/*           Menu           */
+/*           Menu           */
+
+.header-container{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #7BB6E0;
+    padding: 20px 0;
+    
+}
+
+.logo{
+    margin-left: 10px;
+}
+
+.navbar{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    
+}
+.nav-opt{
+    font-size: 16px;
+    padding: 0.5rem 0.7rem;
+    border: 0.1px solid black;
+    border-radius: 999px;
+    background-color: #C8C8C6;
+}
+
+
+
+/*              Main             */
+/*              Main             */
+/*              Main             */
+
+
+/* Área do cliente */
+.client-area{
+    background-color: #C8C8C6;
+    margin: 16px;
+    border-radius: 16px;
+    font-size: large
+}
+
+.client-title{
+    padding: 0.5rem 0.9rem;
+    text-align: center;
+}
+
+.client-links-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1em 1em;
+
+}
+
+.link-client{
+    
+    background-color: #7BB6E0;
+    border-radius: 12px;
+    ;
+    padding: 0.5rem 0.7rem;
+}
+
+
+/* Links externos */
+.external-links-area{
+    background-color: #C8C8C6;
+    margin: 16px;
+    border-radius: 16px;
+    font-size: large;
+}
+
+.links-title{
+    padding: 0.5rem 0.9rem;
+    text-align: center;
+}
+
+.external-links-content{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1em 1em;
+}
+
+.external-link{
+    background-color:#7BB6E0;
+    border-radius: 12px;
+    padding: 2.2rem 1.8rem;
+    
+    
+}  
+
+
+/*          Rodapé            */
+/*          Rodapé            */
+/*          Rodapé            */
+
+
+footer.footer-fixed{
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+.footer-title{
+    text-align: center;
+    padding: 0.6rem;
+    background-color: #7BB6E0;
+}
+
+.footer-title span{
+    text-transform: capitalize;
+}
+
+
+
