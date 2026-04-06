@@ -9,6 +9,7 @@
 body{
     font-family: "Nunito Sans", sans-serif;
     background-color: rgb(109, 109, 109);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -48,7 +49,7 @@ a{
 .nav-opt{
     font-size: 16px;
     padding: 0.5rem 0.7rem;
-    border: 0.1px solid black;
+    border: 1px solid black;
     border-radius: 999px;
     background-color: #C8C8C6;
 }
@@ -61,6 +62,10 @@ a{
 
 
 /* Área do cliente */
+
+.main-content{
+    flex: 1;
+}
 .client-area{
     background-color: #C8C8C6;
     margin: 16px;
@@ -76,8 +81,9 @@ a{
 .client-links-area{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 1em 1em;
+    justify-content: center;
+    padding: 1em;
+    gap: 15px;
 
 }
 
@@ -105,9 +111,10 @@ a{
 
 .external-links-content{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 1em 1em;
+    padding: 1em;
+    gap: 15px;
 }
 
 .external-link{
@@ -126,7 +133,6 @@ a{
 
 footer.footer-fixed{
     bottom: 0;
-    position: fixed;
     width: 100%;
 }
 .footer-title{
@@ -140,4 +146,12 @@ footer.footer-fixed{
 }
 
 
+/*          Misc         */
+/*          Misc         */
+/*          Misc         */
 
+.nav-opt:hover, .link-client:hover, .external-link:hover {
+    filter: brightness(0.9); 
+    transform: translateY(-2px); 
+    transition: 0.3s; 
+}
