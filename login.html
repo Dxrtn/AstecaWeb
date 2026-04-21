@@ -3,42 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Asteca - Login</title>
+    <title>Login - Portal Asteca</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <header class="header">
         <div class="header-container">
-            <h1 class="logo">Asteca Contabilidade</h1>
+            <h1 class="logo"><i class="ph ph-buildings"></i> Asteca <span>Contabilidade</span></h1>
             <nav class="navbar">
-                <a class="nav-opt" href="start.html">Início</a>
-                <a class="nav-opt" href="">Login</a>
-                <a class="nav-opt" href="">Cadastro</a>
+                <a class="nav-link" href="index.html">Início</a>
+                <a class="btn-primary" href="cadastro.html">Criar Conta</a>
             </nav>
         </div>
     </header>
-    <main>
-        <section class="main-login">
-            <div class="login-container">
-                <div class="container-content">
-                    <h2>Entrar na sua conta</h2>
-                    <h5>Faça login para ter acesso às ferramentas</h5>
-                </div>
-                <div = class="form-content">
-                    <div class="email-content">
-                        <label for="email">E-mail</label>
-                        <input class= "email" type="email" placeholder="Seu e-mail aqui">
-                    </div>
-                    <div = class="pass-content">
-                        <label for="password">Senha</label>
-                        <input class= "password" type="password" placeholder="Sua senha aqui">
-                    </div>
-                    <a href="">Esqueceu sua senha?</a>
-                </div>
+
+    <main class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Bem-vindo de volta</h2>
+                <p>Faça login para acessar o painel de ferramentas</p>
             </div>
+            
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
+                </div>
                 
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
                 
-        </section>
-        </main>
+                <a href="#" class="forgot-pass">Esqueceu sua senha?</a>
+                
+                <button type="submit" class="btn-primary btn-block">Entrar na plataforma</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 · Asteca Contabilidade · Rua Barão de Alagoas, 270, Centro</p>
+    </footer>
 </body>
 </html>
