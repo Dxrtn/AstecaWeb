@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Portal Asteca</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo"><i class="ph ph-buildings"></i> Asteca <span>Contabilidade</span></h1>
+            <nav class="navbar">
+                <a class="nav-link" href="index.html">Início</a>
+                <a class="btn-primary" href="login.html">Fazer Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Crie sua conta</h2>
+                <p>Preencha os dados abaixo para acessar o portal</p>
+            </div>
+            
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome Completo / Razão Social</label>
+                    <input type="text" id="name" name="name" placeholder="Ex: Davi Silva ou Empresa LTDA" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <input type="email" id="email" name="email" placeholder="contato@suaempresa.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Crie uma Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirme sua Senha</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita a senha" required>
+                </div>
+
+                <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px; margin-top: 0.5rem;">
+                    <input type="checkbox" id="terms" name="terms" required style="width: auto; cursor: pointer;">
+                    <label for="terms" style="font-size: 0.85rem; color: var(--text-muted);">
+                        Eu aceito os <a href="#" style="color: var(--accent-color); text-decoration: underline;">Termos e Condições</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-block" style="margin-top: 1.5rem;">Finalizar Cadastro</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                Já possui uma conta? <a href="login.html" style="color: var(--accent-color); font-weight: 600;">Faça login aqui</a>
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 · Asteca Contabilidade · Rua Barão de Alagoas, 270, Centro</p>
+    </footer>
+</body>
+</html>

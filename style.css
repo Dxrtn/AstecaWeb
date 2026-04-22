@@ -3,8 +3,8 @@
 
 :root {
     --primary-color: #0f172a; /* Azul muito escuro/Slate */
-    --accent-color: #2563eb; /* Azul vivo */
-    --accent-hover: #1d4ed8;
+    --accent-color: #7bb6e0; /* Azul marca */
+    --accent-hover: #3a8fcc;
     --bg-color: #f1f5f9; /* Fundo cinza bem claro */
     --surface-color: #ffffff; /* Fundo dos cartões */
     --text-main: #334155;
@@ -109,11 +109,12 @@ a {
 
 .login-card {
     background-color: var(--surface-color);
-    padding: 3rem 2.5rem;
+    padding: 2.5rem; 
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     width: 100%;
-    max-width: 420px;
+    max-width: 450px; 
+    margin: 2rem 0; 
 }
 
 .login-header {
