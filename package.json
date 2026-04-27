@@ -2,9 +2,10 @@
   "name": "astecaweb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,10 @@
   },
   "homepage": "https://github.com/Dxrtn/AstecaWeb#readme",
   "dependencies": {
-    "ejs": "^5.0.2",
-    "express": "^5.2.1"
+    "ejs": "^3.1.10",
+    "express": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

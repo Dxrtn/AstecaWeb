@@ -13,8 +13,8 @@
         <div class="header-container">
             <h1 class="logo"><i class="ph ph-buildings"></i> Asteca <span>Contabilidade</span></h1>
             <nav class="navbar">
-                <a class="nav-link" href="index.html">Início</a>
-                <a class="btn-primary" href="cadastro.html">Criar Conta</a>
+                <a class="nav-link" href="/">Início</a>
+                <a class="btn-primary" href="/cadastro">Criar Conta</a>
             </nav>
         </div>
     </header>
@@ -26,7 +26,7 @@
                 <p>Faça login para acessar o painel de ferramentas</p>
             </div>
             
-            <form action="#" method="POST">
+            <form action="/login" method="POST">
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
@@ -44,8 +44,6 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <p>© 2026 · Asteca Contabilidade · Rua Barão de Alagoas, 270, Centro</p>
-    </footer>
+    <%- include('partials/footer') %>
 </body>
 </html>

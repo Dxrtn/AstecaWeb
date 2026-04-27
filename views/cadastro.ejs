@@ -13,8 +13,8 @@
         <div class="header-container">
             <h1 class="logo"><i class="ph ph-buildings"></i> Asteca <span>Contabilidade</span></h1>
             <nav class="navbar">
-                <a class="nav-link" href="index.html">Início</a>
-                <a class="btn-primary" href="login.html">Fazer Login</a>
+                <a class="nav-link" href="/">Início</a>
+                <a class="btn-primary" href="/login">Fazer Login</a>
             </nav>
         </div>
     </header>
@@ -26,7 +26,7 @@
                 <p>Preencha os dados abaixo para acessar o portal</p>
             </div>
             
-            <form action="#" method="POST">
+            <form action="/cadastro" method="POST">
                 <div class="form-group">
                     <label for="name">Nome Completo / Razão Social</label>
                     <input type="text" id="name" name="name" placeholder="Ex: Davi Silva ou Empresa LTDA" required>
@@ -44,7 +44,7 @@
 
                 <div class="form-group">
                     <label for="confirm-password">Confirme sua Senha</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita a senha" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita a senha" required>
                 </div>
 
                 <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px; margin-top: 0.5rem;">
@@ -58,13 +58,11 @@
             </form>
 
             <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
-                Já possui uma conta? <a href="login.html" style="color: var(--accent-color); font-weight: 600;">Faça login aqui</a>
+                Já possui uma conta? <a href="/login" style="color: var(--accent-color); font-weight: 600;">Faça login aqui</a>
             </p>
         </div>
     </main>
 
-    <footer class="footer">
-        <p>© 2026 · Asteca Contabilidade · Rua Barão de Alagoas, 270, Centro</p>
-    </footer>
+    <%- include('partials/footer') %>
 </body>
 </html>
