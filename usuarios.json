@@ -1,22 +1,40 @@
 [
   {
     "id": 1777245554748,
+    "name": "Gabriel",
     "email": "gabriel@gmail.com",
     "password": "gab123"
   },
   {
     "id": 1777245613743,
+    "name": "Davi",
     "email": "davi@gmail.com",
     "password": "davi789"
   },
   {
     "id": 1777245888820,
+    "name": "Lucas",
     "email": "lucas@hotmail.com",
     "password": "lu1990"
   },
   {
-    "id": 1777246294447,
-    "email": "dani1969@hotmail.com",
-    "password": "1234"
+    "id": 1777304441834,
+    "name": "Tamires",
+    "email": "tamisbez@hotmail.com",
+    "password": "tb1989"
+  },
+  {
+    "id": 1777427788934,
+    "name": "Daniel",
+    "email": "daniel@astecaweb.com.br",
+    "password": "dr230405",
+    "type": "user"
+  },
+  {
+    "id": 1777498661309,
+    "name": "Oton Camilo",
+    "email": "oton@hotmail.com",
+    "password": "12345",
+    "type": "user"
   }
 ]

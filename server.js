@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import session from "express-session";
 
 
 const app = express();
@@ -15,19 +16,40 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(session({
+    secret: '040512142023dr',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        httpOnly: true,
+        maxAge: 3600000
+    }
+}))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
 
-    res.render('index')
+    const usuarioLogado = req.session.usuarioLogado;
+
+    res.render('index', { user: usuarioLogado });
 })
 
 app.get('/login', (req, res) => {
 
     res.render('login')
 })
+
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });
+});
+
 
 app.get('/cadastro', (req, res) => {
 
@@ -44,33 +66,43 @@ app.post('/login', (req, res) => {
     const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
 
     if(usuarioEncontrado){
+        req.session.usuarioLogado = usuarioEncontrado;
         res.redirect('/');
+        console.log("Login bem-sucedido:", { email, password });
     }else{
         res.send('Usuário não encontrado')
+        console.log("Login falhou:", { email, password });
     }
 
 });
 
 app.post('/cadastro', (req, res) => {
-    const { nome, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
     
-    if (password !== confirmPassword){
-        res.send('As senhas não conferem');
-    }
     const dadosBrutos = fs.readFileSync('usuarios.json')
     const usuarios = JSON.parse(dadosBrutos)
 
+    const cadastroEncontrado = usuarios.find(usuario => usuario.email === email);
+
+    if (password !== confirmPassword){
+        return res.send('As senhas não conferem');
+    }
+    if (cadastroEncontrado){
+        return res.send('Usuário já cadastrado');
+    }
+
     const novoUsuario = {
         id: Date.now(),
-        nome: nome,
+        name: name,
         email: email,
-        password: password
+        password: password,
+        type: 'user'
     }
 
     usuarios.push(novoUsuario);
     fs.writeFileSync('usuarios.json', JSON.stringify(usuarios, null, 2));
     
-    console.log("Novo cadastro:", { nome, email, password });
+    console.log("Novo cadastro:", { name, email, password });
     
     res.redirect('/login');
 });

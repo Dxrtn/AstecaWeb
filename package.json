@@ -21,7 +21,8 @@
   "homepage": "https://github.com/Dxrtn/AstecaWeb#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.0.0"
+    "express": "^5.0.0",
+    "express-session": "^1.19.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

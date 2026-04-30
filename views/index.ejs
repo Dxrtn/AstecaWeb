@@ -13,8 +13,13 @@
         <div class="header-container">
             <h1 class="logo"><i class="ph ph-buildings"></i> Asteca <span>Contabilidade</span></h1>
             <nav class="navbar">
-                <span class="nav-link">Olá, Visitante</span>
-                <a class="btn-primary" href="/login"><i class="ph ph-sign-in"></i> Fazer Login</a>
+                <% if (user) { %>
+                    <span class="nav-link">Olá, <%= user.name %></span>
+                    <a class="btn-primary" href="/logout"><i class="ph ph-sign-out"></i> Sair</a>
+                <% } else { %>
+                    <span class="nav-link">Olá, Visitante</span>
+                    <a class="btn-primary" href="/login"><i class="ph ph-sign-in"></i> Fazer Login</a>
+                <% } %>
             </nav>
         </div>
     </header>
@@ -67,8 +72,13 @@
             <h2 class="section-title"><i class="ph ph-info"></i> Resumo</h2>
             
             <div class="info-widget">
-                <h4>Empresa Ativa</h4>
-                <p>Nenhuma empresa logada.</p>
+                <% if(user) { %>
+                    <h4>Empresa Ativa</h4>
+                    <p><%= user.name %></p>
+                <% } else { %>
+                    <h4>Empresa Ativa</h4>
+                    <p>Nenhuma empresa logada</p>
+                <% } %>
             </div>
             
             <div class="info-widget">
