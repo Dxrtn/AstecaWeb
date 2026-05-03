@@ -3,7 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import session from "express-session";
-
+import 'dotenv/config'
 
 const app = express();
 const port = 3000;
@@ -17,11 +17,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: '040512142023dr',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false,
+        secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 3600000
     }
@@ -60,7 +60,7 @@ app.post('/login', (req, res) => {
     const { email, password } = req.body;
     console.log("Tentativa de login:", { email, password });
     
-    const dadosBrutos = fs.readFileSync('usuarios.json');
+    const dadosBrutos = fs.readFileSync(path.join(__dirname, 'usuarios.json'), 'utf8');
     const usuarios = JSON.parse(dadosBrutos);
     
     const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
@@ -79,7 +79,7 @@ app.post('/login', (req, res) => {
 app.post('/cadastro', (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
     
-    const dadosBrutos = fs.readFileSync('usuarios.json')
+    const dadosBrutos = fs.readFileSync(path.join(__dirname, 'usuarios.json'), 'utf8');
     const usuarios = JSON.parse(dadosBrutos)
 
     const cadastroEncontrado = usuarios.find(usuario => usuario.email === email);
@@ -100,7 +100,7 @@ app.post('/cadastro', (req, res) => {
     }
 
     usuarios.push(novoUsuario);
-    fs.writeFileSync('usuarios.json', JSON.stringify(usuarios, null, 2));
+    fs.writeFileSync(path.join(__dirname, 'usuarios.json'), JSON.stringify(usuarios, null, 2), 'utf8');
     
     console.log("Novo cadastro:", { name, email, password });
     
