@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import session from "express-session";
+import bcrypt from "bcrypt";
 import 'dotenv/config'
 
 const app = express();
@@ -29,11 +30,15 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+function requireAuth(req, res, next) {
+    if (req.session.usuarioLogado) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
-    const usuarioLogado = req.session.usuarioLogado;
-
-    res.render('index', { user: usuarioLogado });
+app.get('/', requireAuth, (req, res) => {
+    res.render('index', { user: req.session.usuarioLogado });
 })
 
 app.get('/login', (req, res) => {
@@ -56,34 +61,36 @@ app.get('/cadastro', (req, res) => {
     res.render('cadastro')
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log("Tentativa de login:", { email, password });
-    
+    console.log("Tentativa de login:", { email });
+
     const dadosBrutos = fs.readFileSync(path.join(__dirname, 'usuarios.json'), 'utf8');
     const usuarios = JSON.parse(dadosBrutos);
-    
-    const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
 
-    if(usuarioEncontrado){
+    const usuarioEncontrado = usuarios.find(usuario => usuario.email === email);
+
+    if (usuarioEncontrado && await bcrypt.compare(password, usuarioEncontrado.password)) {
         req.session.usuarioLogado = usuarioEncontrado;
+        console.log("Login bem-sucedido:", { email });
         res.redirect('/');
-        console.log("Login bem-sucedido:", { email, password });
-    }else{
-        res.send('Usuário não encontrado')
-        console.log("Login falhou:", { email, password });
+    } else {
+        console.log("Login falhou:", { email });
+        res.send('E-mail ou senha incorretos');
     }
-
 });
 
-app.post('/cadastro', (req, res) => {
+app.post('/cadastro', async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
-    
+
     const dadosBrutos = fs.readFileSync(path.join(__dirname, 'usuarios.json'), 'utf8');
     const usuarios = JSON.parse(dadosBrutos)
 
     const cadastroEncontrado = usuarios.find(usuario => usuario.email === email);
 
+    if (password.length < 8) {
+        return res.send('A senha deve ter pelo menos 8 caracteres');
+    }
     if (password !== confirmPassword){
         return res.send('As senhas não conferem');
     }
@@ -91,19 +98,21 @@ app.post('/cadastro', (req, res) => {
         return res.send('Usuário já cadastrado');
     }
 
+    const senhaHash = await bcrypt.hash(password, 10);
+
     const novoUsuario = {
         id: Date.now(),
         name: name,
         email: email,
-        password: password,
+        password: senhaHash,
         type: 'user'
     }
 
     usuarios.push(novoUsuario);
     fs.writeFileSync(path.join(__dirname, 'usuarios.json'), JSON.stringify(usuarios, null, 2), 'utf8');
-    
-    console.log("Novo cadastro:", { name, email, password });
-    
+
+    console.log("Novo cadastro:", { name, email });
+
     res.redirect('/login');
 });
 

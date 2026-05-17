@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - Portal Asteca</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
@@ -72,13 +71,8 @@
             <h2 class="section-title"><i class="ph ph-info"></i> Resumo</h2>
             
             <div class="info-widget">
-                <% if(user) { %>
-                    <h4>Empresa Ativa</h4>
-                    <p><%= user.name %></p>
-                <% } else { %>
-                    <h4>Empresa Ativa</h4>
-                    <p>Nenhuma empresa logada</p>
-                <% } %>
+                <h4>Empresa Ativa</h4>
+                <p><%= user.name %></p>
             </div>
             
             <div class="info-widget">
